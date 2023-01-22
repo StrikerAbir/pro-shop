@@ -1,10 +1,43 @@
 import Link from "next/link";
+import { toast, Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+
+import { currentUser } from "../../all_structure/redux/features/userSlice";
 
 
 const SignUp = () => {
-    const handleSignUp = () => {
-        
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.userR);
+    console.log(user);
+    const handleSignUp = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const userData = {
+            name,email,password
+        }
+        // console.log(userData);
+        fetch("http://localhost:1000/user/addUser", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // console.log(data.result);
+                if (data.isExist) {
+                    toast.success('Already have account with this email. Login...')
+                    console.log(data);
+                } else {
+                    dispatch(currentUser(data.result))
+                    toast.success('Successfully Signed In..')
+                     window.location.href = "/";
+                }
+        })
     }
+
     return (
       <div className="min-h-screen flex justify-center items-center">
         <div className="hero w-full">
@@ -52,7 +85,7 @@ const SignUp = () => {
                 </div>
                 <div className="form-control mt-6">
                   <input
-                    className="btn bg-green-500 hover:bg-green-400 border-none"
+                    className="btn text-white bg-green-500 hover:bg-green-400 border-none"
                     type="submit"
                     value="Sign Up"
                   />
@@ -68,6 +101,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
     );
 };

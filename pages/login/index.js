@@ -1,8 +1,38 @@
 import Link from "next/link";
+import { toast, Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { currentUser } from "../../all_structure/redux/features/userSlice";
 
 
 const Login = () => {
-    const handleLogin=()=>{}
+    const dispatch = useDispatch();
+    const handleLogin = (event) => {
+          event.preventDefault();
+          const form = event.target;
+          const email = form.email.value;
+          const password = form.password.value;
+          const userData = {
+            email,
+            password,
+          };
+          // console.log(userData);
+        fetch("http://localhost:1000/user/login", {
+            method:"POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userData),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.length>0) {
+                console.log(data);
+                dispatch(currentUser(data));
+                  toast.success("Successfully Login...")
+                  window.location.href = "/";
+              } else {
+                  toast.error('Login failed..')
+              }
+            });
+    }
     return (
       <div className="min-h-screen flex justify-center items-center">
         <div className="hero w-full">
@@ -16,10 +46,10 @@ const Login = () => {
                     <span className="label-text">User Name</span>
                   </label>
                   <input
-                    type="text"
-                    placeholder="user name"
+                    type="email"
+                    placeholder="email"
                     className="input input-bordered"
-                    name="name"
+                    name="email"
                     required
                   />
                 </div>
@@ -51,16 +81,14 @@ const Login = () => {
 
               <p className="text-center">
                 New Here?
-                <Link
-                  className="text-green-500 font-bold ml-2"
-                  href="/signUp"
-                >
+                <Link className="text-green-500 font-bold ml-2" href="/signUp">
                   Sign Up
                 </Link>
               </p>
             </div>
           </div>
         </div>
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
     );
 };
