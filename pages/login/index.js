@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { toast, Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { currentUser } from "../../all_structure/redux/features/userSlice";
 
 
 const Login = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const router=useRouter();
     const handleLogin = (event) => {
           event.preventDefault();
           const form = event.target;
@@ -26,8 +28,8 @@ const Login = () => {
               if (data.length>0) {
                 console.log(data);
                 dispatch(currentUser(data));
-                  toast.success("Successfully Login...")
-                  window.location.href = "/";
+                toast.success("Successfully Login...")
+                router.push("/");
               } else {
                   toast.error('Login failed..')
               }
@@ -88,7 +90,6 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <Toaster position="top-center" reverseOrder={false} />
       </div>
     );
 };
