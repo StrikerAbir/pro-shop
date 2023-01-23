@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const sliderApi = createApi({
   reducerPath: "sliderApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:1000/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: " https://pro-shop-server.vercel.app/",
+  }),
   refetchOnMountOrArgChange: 1,
   endpoints: (builder) => ({
     //for get all slider
@@ -35,7 +37,6 @@ export const sliderApi = createApi({
     getProductDetails: builder.query({
       query: (payload) => `products/getProductDetails/${payload}`,
     }),
-    
   }),
 });
 
