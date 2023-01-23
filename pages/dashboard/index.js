@@ -1,9 +1,10 @@
+import AddSlider from "../../all_structure/components/addSlider";
 
 
 const Dashboard = () => {
     return (
         <div>
-            Dashboard
+            <AddSlider/>
         </div>
     );
 };

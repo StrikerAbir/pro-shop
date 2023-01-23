@@ -1,3 +1,4 @@
+import LazyLoad from "react-lazy-load"
 import Slider from "../all_structure/components/slider"
 
 

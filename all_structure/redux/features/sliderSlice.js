@@ -6,9 +6,20 @@ export const sliderApi = createApi({
     endpoints: (builder) => ({
         getAllSlider: builder.query({ 
             query:()=>"slider/getSlider"
-        })
+        }),
+        addSlider: builder.mutation({ 
+            query: (payload) => ({
+                url: 'slider/addSlider',
+                method: 'POST',
+                body: payload,
+                headers:{
+                    "content-type": "application/json"
+                }
+            })
+        }),
+        
     })
     
 })
 
-export const { useGetAllSliderQuery } = sliderApi;
+export const { useGetAllSliderQuery,useAddSliderMutation } = sliderApi;
