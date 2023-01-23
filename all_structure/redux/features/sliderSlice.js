@@ -1,4 +1,3 @@
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const sliderApi = createApi({
   reducerPath: "sliderApi",
@@ -31,7 +30,19 @@ export const sliderApi = createApi({
     getCatProducts: builder.query({
       query: (payload) => `products/getProducts/${payload}`,
     }),
+
+    //get  product details
+    getProductDetails: builder.query({
+      query: (payload) => `products/getProductDetails/${payload}`,
+    }),
+    
   }),
 });
 
-export const { useGetAllSliderQuery,useAddSliderMutation,useGetAllCategoriesQuery,useGetCatProductsQuery } = sliderApi;
+export const {
+  useGetAllSliderQuery,
+  useAddSliderMutation,
+  useGetAllCategoriesQuery,
+    useGetCatProductsQuery,
+  useGetProductDetailsQuery
+} = sliderApi;

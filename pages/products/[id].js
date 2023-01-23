@@ -6,7 +6,7 @@ import { useGetCatProductsQuery } from '../../all_structure/redux/features/slide
 const Products = () => {
     const router = useRouter();
     const category_id = router.query.id;
-    console.log(category_id);
+    // console.log(category_id);
     const {
       data: products,
       error,

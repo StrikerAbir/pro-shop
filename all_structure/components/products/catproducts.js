@@ -9,8 +9,8 @@ const CatProducts = ({products}) => {
           <h2 className="text-5xl font-semibold"> Dive Into Products</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center lg:grid-cols-3 gap-6 mt-10 mx-2">
-          {products.map((products) => (
-            <SingleProduct key={products._id} products={products}></SingleProduct>
+          {products.map((product) => (
+            <SingleProduct key={product._id} product={product}></SingleProduct>
           ))}
         </div>
       </div>
