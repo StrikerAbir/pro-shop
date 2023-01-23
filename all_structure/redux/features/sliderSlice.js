@@ -5,9 +5,12 @@ export const sliderApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:1000/" }),
   refetchOnMountOrArgChange: 1,
   endpoints: (builder) => ({
+    //for get all slider
     getAllSlider: builder.query({
       query: () => "slider/getSlider",
     }),
+
+    // insert one slider
     addSlider: builder.mutation({
       query: (payload) => ({
         url: "slider/addSlider",
@@ -18,7 +21,17 @@ export const sliderApi = createApi({
         },
       }),
     }),
+
+    // get all categories
+    getAllCategories: builder.query({
+      query: () => "categories/getCategories",
+    }),
+
+    //get single categories product
+    getCatProducts: builder.query({
+      query: (payload) => `products/getProducts/${payload}`,
+    }),
   }),
 });
 
-export const { useGetAllSliderQuery,useAddSliderMutation } = sliderApi;
+export const { useGetAllSliderQuery,useAddSliderMutation,useGetAllCategoriesQuery,useGetCatProductsQuery } = sliderApi;

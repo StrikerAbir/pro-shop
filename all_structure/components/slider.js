@@ -4,8 +4,8 @@ import "react-slideshow-image/dist/styles.css";
 
 
 const Slider = () => {
-    const { data: sliders, error, isError, isLoading,refetch } = useGetAllSliderQuery({pollingInterval:3000});
-    console.log(sliders);
+    const { data: sliders, error, isError, isLoading,refetch } = useGetAllSliderQuery();
+    // console.log(sliders);
     
   if (isLoading) {
     return <h2>Loading...</h2>;
