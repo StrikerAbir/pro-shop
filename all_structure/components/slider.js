@@ -1,11 +1,12 @@
 import { Slide } from "react-slideshow-image";
 import { useGetAllSliderQuery } from "../redux/features/sliderSlice";
 import "react-slideshow-image/dist/styles.css";
-import { useEffect } from "react";
+
 
 const Slider = () => {
-    const { data: sliders, error, isError, isLoading } = useGetAllSliderQuery();
-//   console.log(sliders);
+    const { data: sliders, error, isError, isLoading,refetch } = useGetAllSliderQuery({pollingInterval:3000});
+    console.log(sliders);
+    
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
@@ -39,3 +40,4 @@ const Slider = () => {
 };
 
 export default Slider;
+

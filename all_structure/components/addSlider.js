@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { useAddSliderMutation } from "../redux/features/sliderSlice";
 
 const AddSlider = () => {
-    const [addSlider,response] = useAddSliderMutation();
+    const [addSlider, response] = useAddSliderMutation();
 //    if (response.isSuccess) {
 //      toast.success("Slider added successfully");
 //    }
@@ -15,6 +15,7 @@ const AddSlider = () => {
         const data = { title, image };
         addSlider(data);
         form.reset();
+        
          
     }
   return (
