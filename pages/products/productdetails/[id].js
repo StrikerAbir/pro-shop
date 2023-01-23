@@ -6,13 +6,14 @@ import { useGetProductDetailsQuery } from "../../../all_structure/redux/features
 
 
 const ProductDetails = () => {
+    
     const router = useRouter()
     const product_id = router.query.id;
     // console.log(product_id);
     const {
       data: product,
       error,
-      isError,
+      isError,                                
       isLoading,
       refetch,
     } = useGetProductDetailsQuery(product_id);

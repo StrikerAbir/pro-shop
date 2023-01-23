@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 
 const NavBar = () => {
-
+    // const user = useSelector(state => state.userR)
+    // console.log(user);
   const menuOptions = (
     <>
       <li className="font-semibold ">

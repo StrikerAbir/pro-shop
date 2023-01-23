@@ -10,7 +10,7 @@ const Categories = () => {
       isLoading,
       refetch,
     } = useGetAllCategoriesQuery();
-    console.log(categories);
+    // console.log(categories);
     if (isLoading) {
       return <h2>Loading...</h2>;
     }

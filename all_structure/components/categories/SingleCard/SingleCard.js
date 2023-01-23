@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const SingleCard = ({ category }) => {
-    console.log(category);
+    // console.log(category);
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`;
     };
